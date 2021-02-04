@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { ResetBtn } from './components/resetbtn';
+import { LeftTile } from './components/lefttile';
+import { RightTile } from './components/righttile';
+import { useState } from 'react';
+
+
 
 function App() {
+
+  const [text, setText] = useState("");
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ResetBtn onClick={(event) => setText("")}></ResetBtn>
+      <div className="container">
+        <LeftTile
+          value={text}
+          onInput={(event) => setText(event.target.value)}></LeftTile>
+        <RightTile>{text}</RightTile>
+      </div>
     </div>
   );
 }
